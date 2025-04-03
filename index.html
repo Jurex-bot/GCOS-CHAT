@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCOS - Social Network</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Purple Gradient Background -->
+    <div class="background"></div>
+
+    <!-- Login Wall -->
+    <div class="login-wall" id="loginWall">
+        <div class="login-container">
+            <div class="logo">
+                <i class="fas fa-users"></i>
+                <h1>GCOS</h1>
+            </div>
+            <p>Connect with your community</p>
+            <button id="wallLoginBtn"><i class="fas fa-sign-in-alt"></i> Log In</button>
+            <button id="wallSignupBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="app-container" id="appContainer">
+        <!-- Header -->
+        <header>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">
+                <i class="fas fa-users"></i>
+                <h1>GCOS</h1>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search GCOS...">
+            </div>
+            <div class="user-menu">
+                <img src="https://via.placeholder.com/40" alt="Profile" id="userAvatar">
+                <span id="userName">User</span>
+                <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </header>
+
+        <!-- Sidebar (Persistent) -->
+        <div class="sidebar">
+            <div class="sidebar-profile">
+                <img src="https://via.placeholder.com/80" alt="Profile" id="sidebarAvatar">
+                <h3 id="sidebarName">User</h3>
+                <p id="sidebarRole"><i class="fas fa-user"></i> Member</p>
+                <button id="changeAvatarBtn"><i class="fas fa-camera"></i> Change Photo</button>
+                <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+            </div>
+            <ul>
+                <li><a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" data-page="photos"><i class="fas fa-images"></i> Photos</a></li>
+                <li><a href="#" data-page="officers"><i class="fas fa-users"></i> Officers</a></li>
+                <li><a href="#" data-page="members"><i class="fas fa-user-friends"></i> Members</a></li>
+                <li><a href="#" data-page="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <button id="fullscreenBtn"><i class="fas fa-expand"></i> Fullscreen</button>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Home Page -->
+            <section id="home" class="page active">
+                <div class="create-post">
+                    <textarea placeholder="What's on your mind?" id="postContent"></textarea>
+                    <div class="post-options">
+                        <div class="photo-option">
+                            <input type="file" id="postPhotoUpload" accept="image/*">
+                            <label for="postPhotoUpload"><i class="fas fa-image"></i> Photo</label>
+                        </div>
+                        <button id="postBtn"><i class="fas fa-paper-plane"></i> Post</button>
+                    </div>
+                    <div class="photo-preview" id="photoPreview"></div>
+                </div>
+                <div class="posts" id="postsContainer">
+                    <!-- Posts will appear here -->
+                </div>
+            </section>
+
+            <!-- Other Pages -->
+            <section id="photos" class="page">
+                <h2>Photo Gallery</h2>
+                <div class="gallery" id="galleryContainer">
+                    <!-- Photos will appear here -->
+                </div>
+            </section>
+
+            <!-- Officers Page -->
+            <section id="officers" class="page">
+                <div class="officers-header">
+                    <h2>Officers</h2>
+                    <div class="admin-controls" id="adminOfficerControls">
+                        <select id="memberSelect">
+                            <option value="">Select Member</option>
+                        </select>
+                        <select id="positionSelect">
+                            <option value="President">President</option>
+                            <option value="Vice President">Vice President</option>
+                            <option value="Secretary">Secretary</option>
+                            <option value="Treasurer">Treasurer</option>
+                            <option value="Auditor">Auditor</option>
+                            <option value="Custom">Custom</option>
+                        </select>
+                        <input type="text" id="customPosition" placeholder="Custom Position" style="display: none;">
+                        <button id="addOfficerBtn"><i class="fas fa-plus"></i> Add Officer</button>
+                    </div>
+                </div>
+                <div class="officers-list" id="officersList">
+                    <!-- Officers will appear here -->
+                </div>
+            </section>
+
+            <!-- Members Page -->
+            <section id="members" class="page">
+                <h2>GCOS Members</h2>
+                <div class="members-list" id="membersList">
+                    <!-- Members will appear here -->
+                </div>
+            </section>
+
+            <!-- Contact Page -->
+            <section id="contact" class="page">
+                <h2>Contact Admin</h2>
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Log In to GCOS</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required id="loginEmail">
+                <input type="password" placeholder="Password" required id="loginPassword">
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Join GCOS</h2>
+            <form id="signupForm">
+                <input type="text" placeholder="Full Name" required id="signupName">
+                <input type="email" placeholder="Email" required id="signupEmail">
+                <input type="password" placeholder="Password" required id="signupPassword">
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div class="modal" id="commentModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="commentPostTitle">Comments</h2>
+            <div class="comments-container" id="commentsContainer">
+                <!-- Comments will appear here -->
+            </div>
+            <form id="commentForm">
+                <input type="text" placeholder="Write a comment..." required id="commentText">
+                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
