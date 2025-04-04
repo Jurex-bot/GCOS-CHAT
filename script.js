@@ -640,4 +640,35 @@ window.removeOfficer = function(officerId) {
         officers = officers.filter(o => o.id !== officerId);
         renderOfficers();
     }
-};
+}
+
+// Request storage permission
+function requestStoragePermission() {
+  if (navigator.storage && navigator.storage.persist) {
+    navigator.storage.persist().then(granted => {
+      if (granted) {
+        console.log("Storage permission granted");
+      }
+    });
+  }
+}
+
+// Call this when user first logs in
+requestStoragePermission();
+
+// Save images to localStorage
+function saveImageToStorage(key, file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      localStorage.setItem(key, e.target.result);
+      resolve(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+// Load image from storage
+function loadImageFromStorage(key) {
+  return localStorage.getItem(key);
+}
