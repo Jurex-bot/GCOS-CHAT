@@ -183,3 +183,31 @@
     <script src="script.js"></script>
 </body>
   </html>
+
+<!-- Add to header -->
+<div class="theme-switcher">
+  <button id="themeToggle"><i class="fas fa-moon"></i></button>
+</div>
+
+<!-- Add to sidebar -->
+<li><a href="#" data-page="bylaws"><i class="fas fa-book"></i> ByLaws</a></li>
+
+<!-- Add new ByLaws page section -->
+<section id="bylaws" class="page">
+  <h2>Community ByLaws</h2>
+  <div class="bylaws-content" id="bylawsContent">
+    <!-- Content will be loaded from localStorage -->
+  </div>
+  <textarea id="editBylaws" placeholder="Edit bylaws here..." style="display:none;"></textarea>
+  <button id="saveBylaws" style="display:none;">Save Changes</button>
+</section>
+
+<!-- Add admin controls to members page -->
+<div class="admin-controls" id="adminMemberControls" style="display:none;">
+  <select id="roleSelect">
+    <option value="member">Member</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button id="updateRoleBtn"><i class="fas fa-user-cog"></i> Update Role</button>
+  <button id="removeMemberBtn"><i class="fas fa-user-minus"></i> Remove Member</button>
+</div>
