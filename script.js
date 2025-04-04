@@ -686,3 +686,28 @@ document.querySelectorAll('.gallery-item img').forEach(img => {
     });
   });
 });
+
+// Add to your init()
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+  
+  const icon = document.getElementById('themeToggle').querySelector('i');
+  if (document.body.classList.contains('dark-mode')) {
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+  }
+}
+
+// Check saved theme preference
+if (localStorage.getItem('darkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+  const icon = document.getElementById('themeToggle').querySelector('i');
+  icon.classList.remove('fa-moon');
+  icon.classList.add('fa-sun');
+}
