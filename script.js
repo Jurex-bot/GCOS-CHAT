@@ -672,3 +672,17 @@ function saveImageToStorage(key, file) {
 function loadImageFromStorage(key) {
   return localStorage.getItem(key);
 }
+
+// Add to your gallery rendering code
+document.querySelectorAll('.gallery-item img').forEach(img => {
+  img.addEventListener('click', function() {
+    const fullscreenDiv = document.createElement('div');
+    fullscreenDiv.className = 'fullscreen-image';
+    fullscreenDiv.innerHTML = `<img src="${this.src}" alt="Fullscreen">`;
+    document.body.appendChild(fullscreenDiv);
+    
+    fullscreenDiv.addEventListener('click', () => {
+      document.body.removeChild(fullscreenDiv);
+    });
+  });
+});
