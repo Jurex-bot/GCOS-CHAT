@@ -929,3 +929,60 @@ main {
         justify-content: center;
     }
 }
+
+/* Theme Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .app-container,
+body.dark-mode .modal-content,
+body.dark-mode .post,
+body.dark-mode .member-card,
+body.dark-mode .officer-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-color: #333;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #333;
+  color: #fff;
+  border-color: #444;
+}
+
+/* Fullscreen Image Viewer */
+.fullscreen-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.fullscreen-image img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/* ByLaws Page */
+.bylaws-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+body.dark-mode .bylaws-content {
+  background: #2d2d2d;
+    }
